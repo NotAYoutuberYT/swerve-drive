@@ -43,9 +43,9 @@ public class DriveSwerveCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    double ySpeed = m_controller.getLeftY();
-    double xSpeed = m_controller.getLeftX();
-    double rot = m_controller.getRightX();
+    double ySpeed = m_controller.getLeftY() * DriveTrainConstants.speed;
+    double xSpeed = m_controller.getLeftX() * DriveTrainConstants.speed;
+    double rot = m_controller.getRightX() * DriveTrainConstants.speed;
 
     m_subsystem.drive(xSpeed, ySpeed, rot, DriveTrainConstants.fieldRelative);
   }
