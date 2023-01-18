@@ -17,10 +17,16 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  /**
+   * Constants representing the ports controllers use
+   */
   public static class ControllerConstants {
     public static final int driverControllerPort = 0;
   }
 
+  /**
+   * Constants used in {@link frc.robot.subsystems.SwerveModuleSubsystem SwerveModuleSubsystem}
+   */
   public static class SwerveModuleConstants {
     public static final double wheelRadius = 0.5;
     public static final double encouderResolution = 4096;
@@ -42,15 +48,21 @@ public final class Constants {
     public static final double turningPIDControllerD = 0;
   }
 
+  /**
+   * Constants used in {@link frc.robot.subsystems.SwerveDrivetrainSubsystem SwerveDriveTrainSubsystem}
+   */
   public static class DriveTrainConstants {
     public static final boolean fieldRelative = true;
-    public static final double speed = 0.1;
 
-    // ~~ only port constant in this class
-    public static final int gyroPort = -1;
+    public static final double drivingSpeed = 0.1; // ~~ constant that all input used for forwards and sideways movement is multiplied by
+    public static final double turningSpeed = 0.1; // ~~ constant that all input used for turning is multiplied by
+    public static final double maxSpeed = 3;       // ~~ speed the robot isn't allowed to exceed
   }
 
-  public static class SwerveModulePortConstants {
+  /**
+   * Constants for holding the ports things are plugged into
+   */
+  public static class PortConstants {
     public static final int frontLeftDrive = -1;
     public static final int frontLeftTurn = -1;
     public static final int frontLeftDriveEncoderA = -1;
@@ -78,5 +90,7 @@ public final class Constants {
     public static final int rearRightDriveEncoderB = -1;
     public static final int rearRightTurnEncoderA = -1;
     public static final int rearRightTurnEncoderB = -1;
+
+    public static final int gyroPort = -1;
   }
 }

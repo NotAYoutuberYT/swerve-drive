@@ -9,7 +9,7 @@ import frc.robot.subsystems.SwerveDrivetrainSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-/** An example command that uses an example subsystem. */
+/** A command that drives a {@link frc.robot.subsystems.SwerveDrivetrainSubsystem SwerveDriveTrainSubsystem}. */
 public class DriveSwerveCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
@@ -20,9 +20,10 @@ public class DriveSwerveCommand extends CommandBase {
   private final XboxController m_controller;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new DriveSwerveCommand.
    *
-   * @param subsystem The subsystem used by this command.
+   * @param subsystem The {@link frc.robot.subsystems.SwerveDrivetrainSubsystem SwerveDriveTrainSubsystem} this command will use.
+   * @param controller The {@link edu.wpi.first.wpilibj.XboxController XboxController} the command will use
    */
   public DriveSwerveCommand(SwerveDrivetrainSubsystem subsystem, XboxController controller) {
     m_subsystem = subsystem;
@@ -43,9 +44,9 @@ public class DriveSwerveCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    double ySpeed = m_controller.getLeftY() * DriveTrainConstants.speed;
-    double xSpeed = m_controller.getLeftX() * DriveTrainConstants.speed;
-    double rot = m_controller.getRightX() * DriveTrainConstants.speed;
+    double ySpeed = m_controller.getLeftY() * DriveTrainConstants.drivingSpeed;
+    double xSpeed = m_controller.getLeftX() * DriveTrainConstants.drivingSpeed;
+    double rot = m_controller.getRightX() * DriveTrainConstants.turningSpeed;
 
     m_subsystem.drive(xSpeed, ySpeed, rot, DriveTrainConstants.fieldRelative);
   }

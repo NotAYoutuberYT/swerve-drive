@@ -28,19 +28,19 @@ public class SwerveModuleSubsystem extends SubsystemBase {
   private final Encoder m_driveEncoder;
   private final Encoder m_turningEncoder;
 
-  // Gains are for example purposes only - must be determined for your own robot!
+  /** PID controller used for driving (p, i, and d terms are defined in {@link frc.robot.Constants.SwerveModuleConstants}) */
   private final PIDController m_drivePIDController = new PIDController(
     SwerveModuleConstants.drivingPIDControlP, SwerveModuleConstants.drivingPIDControlI, SwerveModuleConstants.drivingPIDControlD);
-
-  // Gains are for example purposes only - must be determined for your own robot!
+  /** PID controller used for driving (p, i, and d terms are defined in {@link frc.robot.Constants.SwerveModuleConstants}) */
   private final ProfiledPIDController m_turningPIDController = new ProfiledPIDController(
     SwerveModuleConstants.turningPIDControllerP, SwerveModuleConstants.turningPIDControllerI, SwerveModuleConstants.turningPIDControllerD,
       new TrapezoidProfile.Constraints(
           kModuleMaxAngularVelocity, kModuleMaxAngularAcceleration));
 
-  // Gains are for example purposes only - must be determined for your own robot!
+  /** feed forward used for driving (kS and kV are defined in {@link frc.robot.Constants.SwerveModuleConstants}) */
   private final SimpleMotorFeedforward m_driveFeedforward = new SimpleMotorFeedforward(
     SwerveModuleConstants.drivingFeedForwardS, SwerveModuleConstants.drivingFeedForwardV);
+  /** feed forward used for turning (kS and kV defined in {@link frc.robot.Constants.SwerveModuleConstants}) */
   private final SimpleMotorFeedforward m_turnFeedforward = new SimpleMotorFeedforward(
     SwerveModuleConstants.turningFeedForwardS, SwerveModuleConstants.turningFeedForwardV);
 
@@ -91,8 +91,6 @@ public class SwerveModuleSubsystem extends SubsystemBase {
   }
 
   /**
-   * Returns the current state of the module.
-   *
    * @return The current state of the module.
    */
   public SwerveModuleState getState() {
@@ -101,8 +99,6 @@ public class SwerveModuleSubsystem extends SubsystemBase {
   }
 
   /**
-   * Returns the current position of the module.
-   *
    * @return The current position of the module.
    */
   public SwerveModulePosition getPosition() {

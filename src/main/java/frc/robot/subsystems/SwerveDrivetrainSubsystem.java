@@ -12,11 +12,9 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveTrainConstants;
+import frc.robot.Constants.PortConstants;
 
 public class SwerveDrivetrainSubsystem extends SubsystemBase{
-  public static final double kMaxSpeed = 3.0; // 3 meters per second
-  public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
-
   private final Translation2d m_frontLeftLocation = new Translation2d(0.381, 0.381);
   private final Translation2d m_frontRightLocation = new Translation2d(0.381, -0.381);
   private final Translation2d m_backLeftLocation = new Translation2d(-0.381, 0.381);
@@ -27,15 +25,17 @@ public class SwerveDrivetrainSubsystem extends SubsystemBase{
   private final SwerveModuleSubsystem m_rearLeftModule;
   private final SwerveModuleSubsystem m_rearRightModule;
 
-  private final AnalogGyro m_gyro = new AnalogGyro(DriveTrainConstants.gyroPort);
+  private final AnalogGyro m_gyro = new AnalogGyro(PortConstants.gyroPort);
 
-  private final SwerveDriveOdometry m_odometry;
+  private SwerveDriveOdometry m_odometry;
 
   private final SwerveDriveKinematics m_kinematics =
   new SwerveDriveKinematics(
       m_frontLeftLocation, m_frontRightLocation, m_backLeftLocation, m_backRightLocation);
 
-  /* Creates a new SwerveDrivetrainSubsystem */
+  /**
+   * Creates a new {@link SwerveDrivetrainSubsystem} from four {@link SwerveModuleSubsystem SwerveModuleSubsystems}
+   */
   public SwerveDrivetrainSubsystem(
       SwerveModuleSubsystem frontLeftModule,
       SwerveModuleSubsystem frontRightModule,
@@ -60,7 +60,8 @@ public class SwerveDrivetrainSubsystem extends SubsystemBase{
   }
 
   /**
-   * Method to drive the robot using joystick info.
+   * Method to drive the robot using speed info.
+   * Speeds should be between -1 and 1, but if the robot will exceed {@link frc.robot.Constants.DriveTrainConstants#maxSpeed} it will damp the robot speed.
    *
    * @param xSpeed Speed of the robot in the x direction (forward).
    * @param ySpeed Speed of the robot in the y direction (sideways).
@@ -73,7 +74,7 @@ public class SwerveDrivetrainSubsystem extends SubsystemBase{
             fieldRelative
                 ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, rot, m_gyro.getRotation2d())
                 : new ChassisSpeeds(xSpeed, ySpeed, rot));
-    SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, kMaxSpeed);
+    SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveTrainConstants.maxSpeed);
     m_frontLeftModule.setDesiredState(swerveModuleStates[0]);
     m_frontRightModule.setDesiredState(swerveModuleStates[1]);
     m_rearLeftModule.setDesiredState(swerveModuleStates[2]);
