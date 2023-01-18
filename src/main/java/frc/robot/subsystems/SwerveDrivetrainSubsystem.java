@@ -14,6 +14,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveTrainConstants;
 import frc.robot.Constants.PortConstants;
 
+/**
+ * A subsystem used to control four {@link SwerveModuleSubsystem SwerveModuleSubsystems}
+ * (Requires a gyro)
+ */
 public class SwerveDrivetrainSubsystem extends SubsystemBase{
   private final Translation2d m_frontLeftLocation = new Translation2d(0.381, 0.381);
   private final Translation2d m_frontRightLocation = new Translation2d(0.381, -0.381);
@@ -61,7 +65,8 @@ public class SwerveDrivetrainSubsystem extends SubsystemBase{
 
   /**
    * Method to drive the robot using speed info.
-   * Speeds should be between -1 and 1, but if the robot will exceed {@link frc.robot.Constants.DriveTrainConstants#maxSpeed} it will damp the robot speed.
+   * Speeds should be between -1 and 1, but if the robot will exceed 
+   * {@link frc.robot.Constants.DriveTrainConstants#maxSpeed} it will damp the robot speed.
    *
    * @param xSpeed Speed of the robot in the x direction (forward).
    * @param ySpeed Speed of the robot in the y direction (sideways).

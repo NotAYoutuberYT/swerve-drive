@@ -18,6 +18,10 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SwerveModuleConstants;
 
+/**
+ * A subsysem that wraps two {@link CANSparkMax CanSparkMaxes}
+ * and their {@link Encoder Encoders}.
+ */
 public class SwerveModuleSubsystem extends SubsystemBase {
   private static final double kModuleMaxAngularVelocity = SwerveModuleConstants.maxAngularVelocity;
   private static final double kModuleMaxAngularAcceleration = SwerveModuleConstants.maxAngularAcceleration; // radians per second squared
