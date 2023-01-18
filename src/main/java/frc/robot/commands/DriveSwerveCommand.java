@@ -11,12 +11,10 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** A command that drives a {@link frc.robot.subsystems.SwerveDrivetrainSubsystem SwerveDriveTrainSubsystem}. */
 public class DriveSwerveCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-
-  // drive train subsystem
+  // <> drive train subsystem
   private final SwerveDrivetrainSubsystem m_subsystem;
 
-  // controller
+  // <> controller
   private final XboxController m_controller;
 
   /**

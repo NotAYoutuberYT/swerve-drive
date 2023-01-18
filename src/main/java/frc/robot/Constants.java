@@ -54,9 +54,9 @@ public final class Constants {
   public static class DriveTrainConstants {
     public static final boolean fieldRelative = true;
 
-    public static final double drivingSpeed = 0.1; // ~~ constant that all input used for forwards and sideways movement is multiplied by
-    public static final double turningSpeed = 0.1; // ~~ constant that all input used for turning is multiplied by
-    public static final double maxSpeed = 3;       // ~~ speed the robot isn't allowed to exceed
+    public static final double drivingSpeed = 0.1; // <> constant that all input used for forwards and sideways movement is multiplied by
+    public static final double turningSpeed = 0.1; // <> constant that all input used for turning is multiplied by
+    public static final double maxSpeed = 3;       // <> speed the robot isn't allowed to exceed
   }
 
   /**

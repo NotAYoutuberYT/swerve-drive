@@ -16,7 +16,7 @@ import frc.robot.Constants.PortConstants;
 
 /**
  * A subsystem used to control four {@link SwerveModuleSubsystem SwerveModuleSubsystems}
- * (Requires a gyro)
+ * (Requires a {@link AnalogGyro})
  */
 public class SwerveDrivetrainSubsystem extends SubsystemBase{
   private final Translation2d m_frontLeftLocation = new Translation2d(0.381, 0.381);

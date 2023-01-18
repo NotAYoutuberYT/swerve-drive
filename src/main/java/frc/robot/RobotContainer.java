@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-  // ~~ subsystems
+  // <> subsystems
   private final SwerveModuleSubsystem m_frontLeftSwerveModule = new SwerveModuleSubsystem(
       PortConstants.frontLeftDrive,
       PortConstants.frontLeftTurn,
@@ -62,10 +62,10 @@ public class RobotContainer {
       m_rearLeftSwerveModule,
       m_rearRightSwerveModule);
 
-  // ~~ controller
+  // <> controller
   private final XboxController m_driverController = new XboxController(ControllerConstants.driverControllerPort);
 
-  // ~~ commands
+  // <> commands
   private final DriveSwerveCommand m_DriveSwerveCommand = new DriveSwerveCommand(
       m_SwerveDrivetrainSubsystem, m_driverController);
 
@@ -93,8 +93,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
    * joysticks}.
    */
-  private void configureBindings() {
-  }
+  private void configureBindings() {}
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

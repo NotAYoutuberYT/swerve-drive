@@ -24,7 +24,7 @@ import frc.robot.Constants.SwerveModuleConstants;
  */
 public class SwerveModuleSubsystem extends SubsystemBase {
   private static final double kModuleMaxAngularVelocity = SwerveModuleConstants.maxAngularVelocity;
-  private static final double kModuleMaxAngularAcceleration = SwerveModuleConstants.maxAngularAcceleration; // radians per second squared
+  private static final double kModuleMaxAngularAcceleration = SwerveModuleConstants.maxAngularAcceleration; // <> radians per second squared
 
   private final CANSparkMax m_driveMotor;
   private final CANSparkMax m_turningMotor;
@@ -77,19 +77,19 @@ public class SwerveModuleSubsystem extends SubsystemBase {
     m_driveEncoder = new Encoder(driveEncoderChannelA, driveEncoderChannelB);
     m_turningEncoder = new Encoder(turningEncoderChannelA, turningEncoderChannelB);
 
-    // Set the distance per pulse for the drive encoder. We can simply use the
+    // <> Set the distance per pulse for the drive encoder. We can simply use the
     // distance traveled for one rotation of the wheel divided by the encoder
     // resolution.
     m_driveEncoder.setDistancePerPulse(
         2 * Math.PI * SwerveModuleConstants.wheelRadius / SwerveModuleConstants.encouderResolution);
 
-    // Set the distance (in this case, angle) in radians per pulse for the turning
+    // <> Set the distance (in this case, angle) in radians per pulse for the turning
     // encoder.
     // This is the the angle through an entire rotation (2 * pi) divided by the
     // encoder resolution.
     m_turningEncoder.setDistancePerPulse(2 * Math.PI / SwerveModuleConstants.encouderResolution);
 
-    // Limit the PID Controller's input range between -pi and pi and set the input
+    // <> Limit the PID Controller's input range between -pi and pi and set the input
     // to be continuous.
     m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
   }
@@ -116,15 +116,15 @@ public class SwerveModuleSubsystem extends SubsystemBase {
    * @param desiredState Desired state with speed and angle.
    */
   public void setDesiredState(SwerveModuleState desiredState) {
-    // Optimize the reference state to avoid spinning further than 90 degrees
+    // <> Optimize the reference state to avoid spinning further than 90 degrees
     SwerveModuleState state = SwerveModuleState.optimize(desiredState, new Rotation2d(m_turningEncoder.getDistance()));
 
-    // Calculate the drive output from the drive PID controller.
+    // <> Calculate the drive output from the drive PID controller.
     final double driveOutput = m_drivePIDController.calculate(m_driveEncoder.getRate(), state.speedMetersPerSecond);
 
     final double driveFeedforward = m_driveFeedforward.calculate(state.speedMetersPerSecond);
 
-    // Calculate the turning motor output from the turning PID controller.
+    // <> Calculate the turning motor output from the turning PID controller.
     final double turnOutput = m_turningPIDController.calculate(m_turningEncoder.getDistance(),
         state.angle.getRadians());
 
