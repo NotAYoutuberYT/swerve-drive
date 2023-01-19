@@ -7,7 +7,7 @@ package frc.robot;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.PortConstants;
 import frc.robot.commands.DriveSwerveCommand;
-import frc.robot.subsystems.SwerveDrivetrainSubsystem;
+import frc.robot.subsystems.SwerveDriveTrainSubsystem;
 import frc.robot.subsystems.SwerveModuleSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -56,7 +56,7 @@ public class RobotContainer {
       PortConstants.rearRightTurnEncoderA,
       PortConstants.rearRightTurnEncoderB);
 
-  private final SwerveDrivetrainSubsystem m_SwerveDrivetrainSubsystem = new SwerveDrivetrainSubsystem(
+  private final SwerveDriveTrainSubsystem m_SwerveDrivetrainSubsystem = new SwerveDriveTrainSubsystem(
       m_frontLeftSwerveModule,
       m_frontRightSwerveModule,
       m_rearLeftSwerveModule,

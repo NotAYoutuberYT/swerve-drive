@@ -5,16 +5,16 @@
 package frc.robot.commands;
 
 import frc.robot.Constants.DriveTrainConstants;
-import frc.robot.subsystems.SwerveDrivetrainSubsystem;
+import frc.robot.subsystems.SwerveDriveTrainSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-/** A command that drives a {@link frc.robot.subsystems.SwerveDrivetrainSubsystem SwerveDriveTrainSubsystem}. */
+/** A command that drives a {@link frc.robot.subsystems.SwerveDriveTrainSubsystem SwerveDriveTrainSubsystem}. */
 public class DriveSwerveCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
   // drive train subsystem
-  private final SwerveDrivetrainSubsystem m_subsystem;
+  private final SwerveDriveTrainSubsystem m_subsystem;
 
   // controller
   private final XboxController m_controller;
@@ -22,10 +22,10 @@ public class DriveSwerveCommand extends CommandBase {
   /**
    * Creates a new DriveSwerveCommand.
    *
-   * @param subsystem The {@link frc.robot.subsystems.SwerveDrivetrainSubsystem SwerveDriveTrainSubsystem} this command will use.
+   * @param subsystem The {@link frc.robot.subsystems.SwerveDriveTrainSubsystem SwerveDriveTrainSubsystem} this command will use.
    * @param controller The {@link edu.wpi.first.wpilibj.XboxController XboxController} the command will use
    */
-  public DriveSwerveCommand(SwerveDrivetrainSubsystem subsystem, XboxController controller) {
+  public DriveSwerveCommand(SwerveDriveTrainSubsystem subsystem, XboxController controller) {
     m_subsystem = subsystem;
     m_controller = controller;
     

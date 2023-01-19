@@ -18,21 +18,22 @@ package frc.robot;
  */
 public final class Constants {
   /**
-   * Constants representing the ports controllers use
+   * <> Constants representing the ports controllers use
    */
   public static class ControllerConstants {
     public static final int driverControllerPort = 0;
   }
 
   /**
-   * Constants used in {@link frc.robot.subsystems.SwerveModuleSubsystem SwerveModuleSubsystem}
+   * <> Constants used in {@link frc.robot.subsystems.SwerveModuleSubsystem
+   * SwerveModuleSubsystem}
    */
   public static class SwerveModuleConstants {
-    public static final double wheelRadius = 0.5;
-    public static final double encouderResolution = 4096;
+    public static final double wheelRadius = 0.5; // <> in meters
+    public static final double encoderResolution = 4096;
 
-    public static final double maxAngularVelocity = Math.PI;
-    public static final double maxAngularAcceleration = 2 * Math.PI;
+    public static final double maxAngularVelocity = Math.PI;         // <> radians per second
+    public static final double maxAngularAcceleration = 2 * Math.PI; // <> radians per second per second
 
     public static final double turningFeedForwardS = 1;
     public static final double turningFeedForwardV = 3;
@@ -49,18 +50,37 @@ public final class Constants {
   }
 
   /**
-   * Constants used in {@link frc.robot.subsystems.SwerveDrivetrainSubsystem SwerveDriveTrainSubsystem}
+   * <> Constants used in {@link frc.robot.subsystems.SwerveDrivetrainSubsystem
+   * SwerveDriveTrainSubsystem}
    */
   public static class DriveTrainConstants {
     public static final boolean fieldRelative = true;
 
-    public static final double drivingSpeed = 0.1; // ~~ constant that all input used for forwards and sideways movement is multiplied by
-    public static final double turningSpeed = 0.1; // ~~ constant that all input used for turning is multiplied by
-    public static final double maxSpeed = 3;       // ~~ speed the robot isn't allowed to exceed
+    public static final double drivingSpeed = 0.1; // <> constant that all input used for forwards and sideways movement is multiplied by
+    public static final double turningSpeed = 0.1; // <> constant that all input used for turning is multiplied by
+    public static final double maxSpeed = 3;       // <> speed the robot isn't allowed to exceed (in meters per second)
+
+    /**
+     * <> The following constants are in meters and should be measured wheel to wheel
+     * 
+     *        Front
+     * 
+     *       +-----+
+     *       |     |
+     *       |     |  <-- This is driveTrainLength1
+     *       |     |
+     *       +-----+
+     * 
+     *         ^
+     *         |
+     *       This is driveTrainLength2
+     */
+    public static final double driveTrainLength1 = 1;
+    public static final double driveTrainLength2 = 1;
   }
 
   /**
-   * Constants for holding the ports things are plugged into
+   * <> Constants for holding the ports things are plugged into
    */
   public static class PortConstants {
     public static final int frontLeftDrive = -1;
