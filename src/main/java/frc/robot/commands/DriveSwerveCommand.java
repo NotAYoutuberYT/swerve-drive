@@ -16,7 +16,7 @@ public class DriveSwerveCommand extends CommandBase {
   // drive train subsystem
   private final SwerveDriveTrainSubsystem m_subsystem;
 
-  // controller
+  // <> controller
   private final XboxController m_controller;
 
   /**
