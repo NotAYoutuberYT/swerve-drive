@@ -18,7 +18,7 @@ package frc.robot;
  */
 public final class Constants {
   /**
-   * <> Constants representing the ports controllers use
+   * <> Constants representing controllers and how they will be configured
    */
   public static class ControllerConstants {
     public static final int driverControllerPort = 0;
@@ -58,7 +58,9 @@ public final class Constants {
 
     public static final double drivingSpeed = 0.1; // <> constant that all input used for forwards and sideways movement is multiplied by
     public static final double turningSpeed = 0.1; // <> constant that all input used for turning is multiplied by
-    public static final double maxSpeed = 3;       // <> speed the robot isn't allowed to exceed (in meters per second)
+
+    public static final double maxSpeed = 3;       // <> speed the the wheels aren't allowed to exceed (in meters per second), set to the wheel's physical max speed
+    public static final double minSpeed = 0.01;    // <> minimum speed the robot will rotate the wheels for (in meters per second)
 
     /**
      * <> The following constants are in meters and should be measured wheel to wheel

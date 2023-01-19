@@ -4,6 +4,9 @@
 
 package frc.robot.subsystems;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -94,6 +97,13 @@ public class SwerveDriveTrainSubsystem extends SubsystemBase{
     // <> ensure the robot doesn't exceed the max speed
     SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveTrainConstants.maxSpeed);
 
+    // <> if the robot is told to drive a miniscule ammount, don't
+    // rotate the wheels
+    double robotSpeed = Collections.max(Arrays.asList(swerveModuleStates)).speedMetersPerSecond;
+    if (robotSpeed < DriveTrainConstants.minSpeed) {
+      return;
+    }
+
     // <> update swerve modules
     m_frontLeftModule.setDesiredState(swerveModuleStates[0]);
     m_frontRightModule.setDesiredState(swerveModuleStates[1]);
@@ -101,7 +111,7 @@ public class SwerveDriveTrainSubsystem extends SubsystemBase{
     m_rearRightModule.setDesiredState(swerveModuleStates[3]);
   }
 
-  /** <> Updates the field relative position of the robot. */
+  /** <> updates the field relative position of the robot */
   public void updateOdometry() {
     m_odometry.update(
         m_gyro.getRotation2d(),

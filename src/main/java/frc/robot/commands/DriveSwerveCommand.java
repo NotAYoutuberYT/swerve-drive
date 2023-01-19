@@ -49,6 +49,7 @@ public class DriveSwerveCommand extends CommandBase {
     double rot = m_controller.getRightX() * DriveTrainConstants.turningSpeed;
 
     m_subsystem.drive(xSpeed, ySpeed, rot, DriveTrainConstants.fieldRelative);
+    m_subsystem.updateOdometry();
   }
 
   // Returns true when the command should end.
