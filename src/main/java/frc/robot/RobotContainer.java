@@ -7,7 +7,8 @@ package frc.robot;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.PortConstants;
 import frc.robot.commands.DriveSwerveCommand;
-import frc.robot.subsystems.SwerveDriveTrainSubsystem;
+import frc.robot.commands.ModuleTestCommand;
+import frc.robot.subsystems.SwerveDrivetrainSubsystem;
 import frc.robot.subsystems.SwerveModuleSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -32,7 +33,7 @@ public class RobotContainer {
       PortConstants.frontLeftTurnEncoderA,
       PortConstants.frontLeftTurnEncoderB);
 
-  private final SwerveModuleSubsystem m_frontRightSwerveModule = new SwerveModuleSubsystem(
+  /* private final SwerveModuleSubsystem m_frontRightSwerveModule = new SwerveModuleSubsystem(
       PortConstants.frontRightDrive,
       PortConstants.frontRightTurn,
       PortConstants.frontRightDriveEncoderA,
@@ -60,20 +61,23 @@ public class RobotContainer {
       m_frontLeftSwerveModule,
       m_frontRightSwerveModule,
       m_rearLeftSwerveModule,
-      m_rearRightSwerveModule);
+      m_rearRightSwerveModule); */
 
   // <> controller
   private final XboxController m_driverController = new XboxController(ControllerConstants.driverControllerPort);
 
   // <> commands
-  private final DriveSwerveCommand m_DriveSwerveCommand = new DriveSwerveCommand(
-      m_SwerveDrivetrainSubsystem, m_driverController);
+  // private final DriveSwerveCommand m_DriveSwerveCommand = new DriveSwerveCommand(
+  //   m_SwerveDrivetrainSubsystem, m_driverController);
+
+  private final ModuleTestCommand m_ModuleTestCommand = new ModuleTestCommand(m_frontLeftSwerveModule, m_driverController);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    m_SwerveDrivetrainSubsystem.setDefaultCommand(m_DriveSwerveCommand);
+    //m_SwerveDrivetrainSubsystem.setDefaultCommand(m_DriveSwerveCommand);
+    m_frontLeftSwerveModule.setDefaultCommand(m_ModuleTestCommand);
 
     // Configure the trigger bindings
     configureBindings();
