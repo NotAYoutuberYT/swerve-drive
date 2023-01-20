@@ -8,7 +8,6 @@ import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.PortConstants;
 import frc.robot.commands.DriveSwerveCommand;
 import frc.robot.commands.ModuleTestCommand;
-import frc.robot.subsystems.SwerveDrivetrainSubsystem;
 import frc.robot.subsystems.SwerveModuleSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
